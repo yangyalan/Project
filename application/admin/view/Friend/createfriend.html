@@ -1,0 +1,62 @@
+{extend name="Index/index"}
+	{block name="content"}
+		<div id="content">
+		<div class="container-fluid">
+			<h1 class="page-title">Form Elements <small>form elements styling and more</small></h1>
+			<div class="row-fluid">
+				
+				<div class="span6">
+					
+					<div class="widget">
+						<div class="widget-header">
+							<h4>友情链接添加</h4>
+						</div>
+						<div class="widget-content">
+							<form class="form-horizontal" method="post" action="/admin/friend_save" enctype="multipart/form-data"/>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">友情链接名字</label>
+									<div class="controls">
+										<input type="text" id="inputEmail" placeholder="Linkname" name="linkname"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">友情链接LOGO</label>
+									<div class="controls">
+										<input type="file" id="inputEmail" name="pic"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">友情链接Url</label>
+									<div class="controls">
+										<input type="text" id="inputEmail" placeholder="Url" name="url"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">网站状态</label>
+									<div class="controls">
+										<select id="inputEmail" placeholder="status" name="status"/>
+											<option value="1" id="inputEmail" style="background:#424744;">启用</option>
+											<option value="2" id="inputEmail" style="background:#424744;">禁用</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<label class="checkbox">
+											<input type="checkbox" /> Remember me
+										</label>
+										<button type="submit" class="btn">Adding</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				
+					
+				</div><!-- end span6 -->
+			</div><!-- end row-fluid -->
+		</div><!-- end container-fluid -->
+	</div>
+	{/block}
+{/extend}

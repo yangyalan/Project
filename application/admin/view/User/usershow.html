@@ -1,0 +1,95 @@
+{extend name="Index/index"}
+	{block name="content"}
+		
+	<div id="content">
+		<div class="container-fluid">
+			<h1 class="page-title">用户显示 <small></small></h1>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="widget">
+						<div class="widget-header">
+						</div>
+						<div class="widget-content">
+							<form action="/admin/user_show" method="get">
+								<label>UserName : 
+								<input type="text" aria-controls="data-table" name="username" style="width:120px;">
+								<select id="inputEmail" style="width:120px;" placeholder="Level" name="level"/>
+									<option value="1" id="inputEmail" style="background:#424744;" selected>普通用户</option>
+									<option value="2" id="inputEmail" style="background:#424744;">一般管理员</option>
+									<option value="3" id="inputEmail" style="background:#424744;">超级管理员</option>
+									</select>
+								<input type="submit" class="btn btn-info" style="margin-top:-10px;" value="Submit">
+								
+								</label>
+								
+							</form>
+								<table id="data-table" class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>User Name</th>
+										<th class="hidden-phone">User Sex</th>
+										<th class="hidden-phone">User Level</th>
+										<th clas="hidden-phone">User Status</th>
+										<th class="hidden-phone">Add Time</th>
+										<th class="hidden-phone">User Phone</th>
+										<th>Opreater</th>
+									</tr>
+								</thead>
+								<tbody>
+								{foreach $data as $v}
+
+									<tr class="odd gradeX">
+										<td>{$v['username']}</td>
+										<td>
+											{if $v->sex==1}
+												男
+												{elseif $v->sex==2}
+												女
+											{/if}</td>
+										<td class="hidden-phone">
+											{if $v->level==1}
+												普通用户
+												{elseif $v->level==2}
+												一般管理员
+												{elseif $v->level==3}
+												超级管理员
+											{/if}
+										</td>
+										<td class="center">
+											{if $v->status==1}
+												启用
+											{elseif $v->status==2}
+												禁用
+											{/if}
+										</td>
+										<td class="hidden-phone">{$v->create_time}</td>
+
+										<td class="center hidden-phone">{$v->phone}</td>
+										
+										<td class="center">
+											<a href="/admin/user_edit/{$v->uid}" class="btn btn-info" style="width:33px;height:14px;line-height:13px;"><i class="icon-cogs"></i> </a>
+											<a href="/admin/user_delete/{$v->uid}"  class="btn btn-small btn-danger"><i class="icon-trash"></i>Delete</a>
+											<a href="/admin/user_pwd/{$v->uid}" style="width:33px;height:14px;line-height:13px;" class="btn btn-success">密码</a></center>
+											{if $v->status==1}
+												<a href="/admin/user_status/{$v->uid}" style="width:33px;height:14px;line-height:13px;background:orange;" class="btn btn-success">禁用</a>
+											{elseif $v->status==2}
+												<a href="/admin/user_status/{$v->uid}" style="width:33px;height:14px;line-height:13px;background:orange;" class="btn btn-success">启用</a>
+											{/if}
+										</td>
+									</tr>
+								{/foreach}
+								</tbody>
+							</table>
+							<div class="dataTables_paginate paging_bootstrap pagination">{$data->render()|raw}</div>
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div><!-- end span12 -->
+			</div><!-- end row-fluid -->
+		</div><!-- end container-fluid -->
+	</div><!-- end #content -->
+	
+
+	{/block}
+{/extend}
