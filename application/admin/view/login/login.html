@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Admetro | Login</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    
+    <!-- ================== GLOBAL STYLE START ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="/admin/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/admin/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/admin/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/assets/jquery-ui/jquery-ui-1.10.1.custom.css" rel="stylesheet" />
+    <link href="/admin/assets/css/style.min.css" rel="stylesheet" />
+    <!-- <link href="/admin/assets/css/style-responsive.min.css" rel="stylesheet" /> -->
+    <!-- ================== GLOBAL STYLE END ================== -->
+    
+    <!-- IE8 HTML5 COMPATIBILITY -->
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+
+    <!-- Body Cover Image
+    ================================================== -->
+    <div class="body-cover"></div>
+    
+    <!-- Login Container
+    ================================================== -->
+    <div id="login">
+        <div class="brand">
+            <span class="color"><i class="icon-leaf"></i> AD  METRO</span>
+        </div>
+        <div class="login-container">
+            <div class="login-header">
+                <i class="icon-lock" id="login-signal"></i> SIGN IN
+            </div>
+            <div class="login-content">
+                <form class="margin-bottom-0" method="post" action="/admin/dologin" />
+                    <div id="error" style="color:yellow;"></div>
+                    <input type="text" class="input-block-level" name="username" id="username" placeholder="User name" autocomplete="off"/><br />
+                    <input type="password" class="input-block-level" name="pwd" placeholder="Password" /><br />
+                    <input type="text" class="input-block-level" name="code" placeholder="Code" /><br />
+                       <img src="/admin/code" onclick="this.src='/admin/code?'+Math.random()" alt="">
+                    <div class="login-buttons">
+                        <button type="submit" id="denglu" class="btn btn-success"><i class="icon-signin"></i> Sign me in</button>
+                        <a href="#" class="pull-right">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- end #login -->
+    <!-- ================== GLOBAL PLUGINS START ================== -->
+    <script src="/admin/assets/js/jquery-1.8.2.min.js"></script>
+    <script src="/admin/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="/admin/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/assets/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- ================== GLOBAL PLUGINS START ================== -->
+    
+    <!-- Application Setting -->
+    <script src="/admin/assets/js/apps.js"></script>
+  <!--  -->
+<script>
+    $("#username").blur(function(){
+        // alert($("#username").val());
+        // die();
+        $.ajax({
+            type : 'get',
+            url : '/admin/search_name',
+            dataType : 'json',
+            data : { 'username' : $("#username").val() },
+            success : function(data) {
+                let obj = JSON.parse(data);
+                if (obj.status == 400) {
+                    $("#error").html('用户名不存在 ! !');
+                    $("#denglu").attr('disabled',true);
+                }
+                if (obj.status == 200) {
+                    $("#error").html('');
+                    $("#denglu").attr('disabled',false);
+                }
+            },
+        });
+    });
+</script>
+<!-- End Of Analytics Code -->

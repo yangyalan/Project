@@ -1,0 +1,107 @@
+{extend name="Index/index"}
+	{block name="content"}
+		<div id="content">
+		<div class="container-fluid">
+			<h1 class="page-title">Form Elements <small>form elements styling and more</small></h1>
+			<div class="row-fluid">
+				
+				<div class="span6">
+					
+					<div class="widget">
+						<div class="widget-header">
+							<h4>用户添加</h4>
+						</div>
+						<div class="widget-content">
+							<form class="form-horizontal" method="post" action="/admin/user_save"/>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Usernamne</label>
+
+									<div class="controls">
+										<input type="text" id="inputEmail" class="uname" placeholder="Username" name="username"/>
+										<div id="error" style="color:red;"></div>
+									</div>
+									
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">Password</label>
+									<div class="controls">
+										<input type="password" id="inputPassword" placeholder="Password" name="pwd"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">RePassword</label>
+									<div class="controls">
+										<input type="password" id="inputPassword" placeholder="Password" name="repwd" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">UserSex</label>
+									<div class="controls">
+										<label><input type="radio" id="inputPassword" placeholder="sex" name="sex" value="1"/>男</label>
+										<label><input type="radio" id="inputPassword" placeholder="sex" name="sex" value="2" />女</label>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">UserPhone</label>
+									<div class="controls">
+										<input type="text" id="inputPassword" placeholder="Phone" name="phone" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">UserLevel</label>
+									<div class="controls">
+										<select id="inputEmail" placeholder="Level" name="level"/>
+											<option value="1" id="inputEmail" style="background:#424744;">普通用户</option>
+											<option value="2" id="inputEmail" style="background:#424744;">一般管理员</option>
+											<option value="3" id="inputEmail" style="background:#424744;">超级管理员</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<label class="checkbox">
+											<input type="checkbox" /> Remember me
+										</label>
+										<button type="submit" id="denglu" class="btn">Sign in</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				
+					
+				</div><!-- end span6 -->
+			</div><!-- end row-fluid -->
+		</div><!-- end container-fluid -->
+
+
+
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+    $(".uname").blur(function(){
+        // alert($(".uname").val());
+        // die();
+        $.ajax({
+            type : 'get',
+            url : '/admin/search_name',
+            dataType : 'json',
+            data : { 'username' : $(".uname").val() },
+            success : function(data) {
+                let obj = JSON.parse(data);
+                if (obj.status == 400) {
+                    $("#error").html('');
+                    $("#denglu").attr('disabled',true);
+                }
+                if (obj.status == 200) {
+                    $("#error").html('用户名已存在');
+                    $("#denglu").attr('disabled',false);
+                }
+            },
+        });
+    });
+</script>
+	{/block}
+{/extend}

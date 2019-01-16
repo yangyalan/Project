@@ -1,0 +1,103 @@
+
+
+{extend name="Index/index"}
+	{block name="content"}
+
+
+<!--内容推荐开始-->
+<div id="webIntro">
+	<div class="webIntroCon">
+		<!--热点推荐开始-->
+		<div class="hotIntro">
+			<img src="/home/images/webintro.jpg"  class="hotimg"/>
+			<div class="hotList">
+				{foreach $hot as $val}
+					{if $val['status']==2}
+						<dl>
+							<dt><a href="/home/product_single/{$val['id']}"><img src="/image/{$val['pic']}" width="100%"/></a></dt>
+							<dd class="ti">{$val['shopname']}</dd>
+							<dd class="money">特价：<font>{$val['price']}.0</font></dd>
+							<dd class="buy"><a href="">立即抢购</a></dd>
+						</dl>
+					{/if}
+				{/foreach}
+			</div>
+		</div>
+		<!--热点推荐结束-->
+
+		<!--促销活动开始-->
+		<div class="newIntro">
+			<img src="/home/images/commintro.jpg"  class="imgNew" />
+			<ul>
+				<li><a href="">·&nbsp;&nbsp;国际起泡酒节 每天9.9元秒</a></li>
+				<li><a href="">·&nbsp;&nbsp;暑期狂欢游 美酒买一赠一</a></li>
+				<li><a href="">·&nbsp;&nbsp;大牌红酒1元秒</a></li>
+				<li><a href="">·&nbsp;&nbsp;酷爽7月 冰点价低至1折</a></li>
+				<li><a href="">·&nbsp;&nbsp;买酒送酒柜 比39元更低</a></li>
+			</ul>
+		</div>
+		<!--促销活动结束-->
+	</div>
+</div>
+<!--内容推荐结束-->
+
+
+<!--面包屑导航开始-->
+<div class="webLogo">当前位置: 
+	<a href="/home/index_index">首页</a> > <a href="##">商品列表</a>
+</div>
+<!--面包屑导航结束-->
+
+
+<!--礼物综合搜综分类开始-->
+<!-- <div id="searchType">
+	<h3>礼物综合搜索</h3>
+
+	<dl>
+		<dt>送礼场合:</dt>
+		<dd><a href="" class="all">全部</a><a href="">生日</a><a href="">结婚</a><a href="">订婚</a><a href="">表白</a><a href="">纪念日</a>
+		<a href="">本命年</a><a href="">乔迁</a><a href="">晋升</a><a href="">分别</a><a href="">毕业</a><a href="">答谢</a></dd>
+		<div style="clear:both"></div>
+	</dl>
+	<dl>
+		<dt>送礼场合:</dt>
+		<dd><a href="" class="all">全部</a><a href="">生日</a><a href="">结婚</a><a href="">订婚</a><a href="">表白</a><a href="">纪念日</a>
+		<a href="">本命年</a><a href="">乔迁</a><a href="">晋升</a><a href="">分别</a><a href="">毕业</a><a href="">答谢</a><a href="">生日</a><a href="">结婚</a><a href="">订婚</a><a href="">表白</a><a href="">纪念日</a>
+		<a href="">本命年</a><a href="">乔迁</a><a href="">晋升</a><a href="">分别</a><a href="">毕业</a><a href="">答谢</a><a href="">生日</a><a href="">结婚</a><a href="">订婚</a><a href="">表白</a><a href="">纪念日</a>
+		<a href="">本命年</a><a href="">乔迁</a><a href="">晋升</a><a href="">分别</a><a href="">毕业</a><a href="">答谢</a><a href="">生日</a><a href="">结婚</a><a href="">订婚</a><a href="">表白</a><a href="">纪念日</a>
+		<a href="">本命年</a><a href="">乔迁</a><a href="">晋升</a><a href="">分别</a><a href="">毕业</a><a href="">答谢</a></dd><div style="clear:both"></div>
+	</dl>
+	<dl>
+		<dt>送礼场合:</dt>
+		<dd><a href="" class="all">全部</a><a href="">生日</a><a href="">结婚</a><a href="">订婚</a><a href="">表白</a><a href="">纪念日</a>
+		<a href="">本命年</a><a href="">乔迁</a><a href="">晋升</a><a href="">分别</a><a href="">毕业</a><a href="">答谢</a></dd>
+		<div style="clear:both"></div>
+	</dl>
+</div> -->
+<!--礼物综合搜综分类结束-->
+
+
+<!--产品展示部分开始-->
+<div id="ProductList">
+	<div class="ti">商口显示</div>
+	
+	<ul>
+		{foreach $hot as $value}
+		<li>
+
+			<a href="/home/product_single/{$value['id']}"><img src="/image/{$value['pic']}" width='200' height="200" /></a>
+			<h3>{$value['shopname']}</h3>
+			<p><span>￥{$value['price']}.00</span><a href="">立即购买</a></p>
+			<!-- <p>本产品售销量：<font>400</font></p> -->
+		</li>
+		{/foreach}
+
+	</ul>
+
+<div style="clear:both;"></div>
+</div>
+<!--产品展示部分结束-->
+
+
+{/block}
+{/extebd}

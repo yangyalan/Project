@@ -1,0 +1,88 @@
+{extend name="Index/index"}
+	{block name="content"}
+		<div id="content">
+		<div class="container-fluid">
+			<h1 class="page-title">Form Elements <small>form elements styling and more</small></h1>
+			<div class="row-fluid">
+				
+				<div class="span6">
+					
+					<div class="widget">
+						<div class="widget-header">
+							<h4>商品修改</h4>
+						</div>
+						<div class="widget-content">
+							<form class="form-horizontal" method="post" action="/admin/goods_update/{$row['id']}" enctype="multipart/form-data"/>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Shopnamne</label>
+									<div class="controls">
+										<input type="text" id="inputEmail" placeholder="Shopname" name="shopname" value="{$row['shopname']}"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Type</label>
+									<div class="controls">
+										<input type="text" id="inputEmail" disabled name="shopname" value="{$row->typelink->name}"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">Shop Price</label>
+									<div class="controls">
+										<input type="text" id="inputPassword" placeholder="Shop Price" name="price" value="{$row['price']}"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">Old pic</label>
+									<div class="controls">
+										<img src="/image/{$row['pic']}" alt="" width="70">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">New pic</label>
+									<div class="controls">
+										<input type="file" id="inputPassword" placeholder="Shop pic" name="pic" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Shop Status</label>
+									<div class="controls">
+										<select id="inputEmail" placeholder="Level" name="status"/>
+											<option value="1" {if $row['status']==1}selected{/if} id="inputEmail" style="background:#424744;">新品</option>
+											<option value="2" {if $row['status']==2}selected{/if} id="inputEmail" style="background:#424744;">热卖</option>
+											<option value="3" {if $row['status']==3}selected{/if} id="inputEmail" style="background:#424744;">下架</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">Description</label>
+									<div class="controls">
+										<textarea name="content" id="" cols="10" value="{$row['content']}" rows="10"></textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">Kucun</label>
+									<div class="controls">
+										<input type="text" id="inputPassword" placeholder="Kucun" name="kucun" value="{$row['kucun']}"/>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<div class="controls">
+										<label class="checkbox">
+											<input type="checkbox" /> Remember me
+										</label>
+										<button type="submit" class="btn">Update</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				
+					
+				</div><!-- end span6 -->
+			</div><!-- end row-fluid -->
+		</div><!-- end container-fluid -->
+	</div>
+	{/block}
+{/extend}

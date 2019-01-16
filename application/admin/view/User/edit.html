@@ -1,0 +1,64 @@
+{extend name="Index/index"}
+	{block name="content"}
+		<div id="content">
+		<div class="container-fluid">
+			<h1 class="page-title">Form Elements <small>form elements styling and more</small></h1>
+			<div class="row-fluid">
+				
+				<div class="span6">
+					
+					<div class="widget">
+						<div class="widget-header">
+							<h4>用户添加</h4>
+						</div>
+						<div class="widget-content">
+							<form class="form-horizontal" method="post" action="/admin/user_update/{$data->uid}"/>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Usernamne</label>
+									<div class="controls">
+										<input type="text" id="inputEmail" placeholder="Username" value="{$data->username}"  name="username"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">UserSex</label>
+									<div class="controls">
+										<label><input type="radio" id="inputPassword" placeholder="sex" name="sex" value="1"{if $data->sex==1}checked{/if}/>男</label>
+										<label><input type="radio" id="inputPassword" placeholder="sex" name="sex" value="2" {if $data->sex==2}checked{/if}/>女</label>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">UserPhone</label>
+									<div class="controls">
+										<input type="text" id="inputPassword" value="{$data->phone}" placeholder="Phone" name="phone" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">UserLevel</label>
+									<div class="controls">
+										<select id="inputEmail" placeholder="Level" name="level"/>
+											<option value="0" id="inputEmail" style="background:#424744;"{if $data->level==1}selected{/if}>普通用户</option>
+											<option value="1" id="inputEmail" style="background:#424744;"{if $data->level==2}selected{/if}>一般管理员</option>
+											<option value="2" id="inputEmail" style="background:#424744;"{if $data->level==3}selected{/if}>超级管理员</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<label class="checkbox">
+											<input type="checkbox" /> Remember me
+										</label>
+										<button type="submit" class="btn">Updating</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				
+					
+				</div><!-- end span6 -->
+			</div><!-- end row-fluid -->
+		</div><!-- end container-fluid -->
+	</div>
+	{/block}
+{/extend}

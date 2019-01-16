@@ -1,0 +1,53 @@
+{extend name="Index/index"}
+	{block name="content"}
+		<div id="content">
+		<div class="container-fluid">
+			<h1 class="page-title">Form Elements <small>form elements styling and more</small></h1>
+			<div class="row-fluid">
+				
+				<div class="span6">
+					
+					<div class="widget">
+						<div class="widget-header">
+							<h4>用户添加</h4>
+						</div>
+						<div class="widget-content">
+							<form class="form-horizontal" method="post" action="/admin/user_pwdupdate/{$data->uid}"/>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Usernamne</label>
+									<div class="controls">
+										<input type="text" id="inputEmail" placeholder="Username" value="{$data->username}" name="username"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">OldPwd</label>
+									<div class="controls">
+										<input type="password" id="inputPassword"  name="oldpwd" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPassword">NewPwd</label>
+									<div class="controls">
+										<input type="password" id="inputPassword"  name="pwd" />
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<label class="checkbox">
+											<input type="checkbox" /> Remember me
+										</label>
+										<button type="submit" class="btn">Updating</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				
+					
+				</div><!-- end span6 -->
+			</div><!-- end row-fluid -->
+		</div><!-- end container-fluid -->
+	</div>
+	{/block}
+{/extend}
